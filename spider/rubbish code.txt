@@ -1,0 +1,50 @@
+//=================direction test=================
+//SG90-->600-2500 = -90<=>90   
+  // for (int s = 0; s <= 5; s++) {
+  //   for (int i = -60; i <= 60; i++) {
+  //     PWM_value = map(i, -90, 90, 600, 2500);
+  //     pwm.writeMicroseconds(s, PWM_value);
+  //     delay(20);
+  //   }
+  //   all_Angle = 0;
+  //   PWM_value = map(angle1, -90, 90, 600, 2500);
+  //   pwm.writeMicroseconds(s, PWM_value);
+  //   delay(500);
+  // }
+
+
+//=================forward=================
+  //=============row up=============
+  pos_A = 60;
+  pos_PWM_value = map(pos_A, -90, 90, 600, 2500);
+  pwm.writeMicroseconds(11, pos_PWM_value);  // 4
+  neg_A = -60;
+  neg_PWM_value = map(neg_A, -90, 90, 600, 2500);
+  pwm.writeMicroseconds(10, neg_PWM_value);  // 3
+  pwm.writeMicroseconds(12, neg_PWM_value);  // 5
+  delay(1000);
+
+  //=============yaw forword=============
+  pos_A = 30;
+  pos_PWM_value = map(pos_A, -90, 90, 600, 2500);
+  pwm.writeMicroseconds(4, pos_PWM_value);
+  neg_A = -30;
+  neg_PWM_value = map(neg_A, -90, 90, 600, 2500);
+  pwm.writeMicroseconds(2, neg_PWM_value);
+  pwm.writeMicroseconds(3, neg_PWM_value);
+  delay(1000);
+
+  //=============row down=============
+  pos_A = 30;
+  pos_PWM_value = map(pos_A, -90, 90, 600, 2500);
+  pwm.writeMicroseconds(11, pos_PWM_value);  // 4
+  neg_A = -30;
+  neg_PWM_value = map(neg_A, -90, 90, 600, 2500);
+  pwm.writeMicroseconds(10, neg_PWM_value);  // 3
+  pwm.writeMicroseconds(12, neg_PWM_value);  // 5
+  delay(1000);
+
+  //=============yaw backword=============
+  pwm.writeMicroseconds(4, PWM_value);
+  pwm.writeMicroseconds(2, PWM_value);
+  pwm.writeMicroseconds(3, PWM_value);
