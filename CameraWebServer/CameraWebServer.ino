@@ -1,15 +1,17 @@
 #include "esp_camera.h"
 #include <WiFi.h>
-#include <DHTesp.h>
 
 //
-// WARNING!!! PSRAM IC required for UXGA resolution and high JPEG quality
-//            Ensure ESP32 Wrover Module or other board with PSRAM is selected
-//            Partial images will be transmitted if image exceeds buffer size
+// WARNING!!! Make sure that you have either selected ESP32 Wrover Module,
+//            or another board which has PSRAM enabled
 //
 
 // Select camera model
-#define CAMERA_MODEL_AI_THINKER // Has PSRAM
+//#define CAMERA_MODEL_WROVER_KIT
+//#define CAMERA_MODEL_ESP_EYE
+//#define CAMERA_MODEL_M5STACK_PSRAM
+//#define CAMERA_MODEL_M5STACK_WIDE
+#define CAMERA_MODEL_AI_THINKER
 
 #include "camera_pins.h"
 
@@ -44,10 +46,8 @@ void setup() {
   config.pin_reset = RESET_GPIO_NUM;
   config.xclk_freq_hz = 20000000;
   config.pixel_format = PIXFORMAT_JPEG;
-
-  // if PSRAM IC present, init with UXGA resolution and higher JPEG quality
-  //                      for larger pre-allocated frame buffer.
-  if (psramFound()) {
+  //init with high specs to pre-allocate larger buffers
+  if(psramFound()){
     config.frame_size = FRAMESIZE_UXGA;
     config.jpeg_quality = 10;
     config.fb_count = 2;
@@ -70,16 +70,16 @@ void setup() {
   }
 
   sensor_t * s = esp_camera_sensor_get();
-  // initial sensors are flipped vertically and colors are a bit saturated
+  //initial sensors are flipped vertically and colors are a bit saturated
   if (s->id.PID == OV3660_PID) {
-    s->set_vflip(s, 1); // flip it back
-    s->set_brightness(s, 1); // up the brightness just a bit
-    s->set_saturation(s, -2); // lower the saturation
+    s->set_vflip(s, 1);//flip it back
+    s->set_brightness(s, 1);//up the blightness just a bit
+    s->set_saturation(s, -2);//lower the saturation
   }
-  // drop down frame size for higher initial frame rate
+  //drop down frame size for higher initial frame rate
   s->set_framesize(s, FRAMESIZE_QVGA);
 
-#if defined(CAMERA_MODEL_M5STACK_WIDE) || defined(CAMERA_MODEL_M5STACK_ESP32CAM)
+#if defined(CAMERA_MODEL_M5STACK_WIDE)
   s->set_vflip(s, 1);
   s->set_hmirror(s, 1);
 #endif
@@ -98,49 +98,8 @@ void setup() {
   Serial.print("Camera Ready! Use 'http://");
   Serial.print(WiFi.localIP());
   Serial.println("' to connect");
-
-  /** Initialize DHT sensor */
-  DHTesp dht;
-  /** Task handle for the light value read task */
-  TaskHandle_t tempTaskHandle = NULL;
-  /** Pin number for DHT11 data pin */
-  int dhtPin = 17;
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  delay(10000);
-
-
-  // Initialize temperature sensor
-  dht.setup(dhtPin, DHTesp::DHT11);
-  TempAndHumidity lastValues = dht.getTempAndHumidity();
-  Serial.println("Temperature: " + String(lastValues.temperature,0);
-  Serial.println("Humidity: " + String(lastValues.humidity,0);
-
-  WiFiClient client;
-  const int httpPort = 80;
-  if (!client.connect(host, httpPort)) {
-    Serial.println("connection failed");
-    return;
-  }
-  String url = "http://127.0.0.1:8081/U2172822/addhumiture?temperature=40&humid=50";
-  // This will send the request to the server
-  client.print(String("GET ") + url + " HTTP/1.1\r\n" +
-               "Host: " + host + "\r\n" +
-               "Connection: close\r\n\r\n");
-  unsigned long timeout = millis();
-  while (client.available() == 0) {
-    if (millis() - timeout > 5000) {
-      Serial.println(">>> Client Timeout !");
-      client.stop();
-      return;
-    }
-  }
-
-  // Read all the lines of the reply from server and print them to Serial
-  while (client.available()) {
-    String line = client.readStringUntil('\r');
-    Serial.print(line);
-  }
 }
