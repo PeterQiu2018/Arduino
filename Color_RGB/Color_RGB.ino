@@ -2,7 +2,7 @@
 #define LED_PIN     7
 #define Button_PIN 6
 #define analogInPin  A0
-#define NUM_LEDS    4
+#define NUM_LEDS    5
 #define CHIPSET     WS2811
 #define COLOR_ORDER GRB
 #define TEMPERATURE_2 Tungsten100W

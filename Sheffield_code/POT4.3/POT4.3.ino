@@ -1,6 +1,6 @@
 
  
-int potAnalogPin = 1; // FSR is connected to analog 0
+int potAnalogPin = A0; // FSR is connected to analog 0
 int potReading;      // the analog reading from the FSR resistor divider
 
  
@@ -20,6 +20,4 @@ void loop(void) {
   // analogWrite(LEDpin, LEDbrightness); // here you are using PWM !!!
   // Serial.print("calibrated potentiometer angle = ");
   // Serial.println(calibrated);
-
-  delay(500);
 }

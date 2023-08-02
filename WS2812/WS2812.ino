@@ -7,7 +7,7 @@
 #define PIN        7
 
 //定义控制的 LED 数量
-#define NUMPIXELS 60
+#define NUMPIXELS 5
 
 Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
