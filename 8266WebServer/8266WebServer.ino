@@ -1,8 +1,8 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 
-char* ssid = "XIAOMI";  // WIFI账户
-char* password = "fhe87gh2vp1";           // WIFI密码
+char* ssid = "CMCC-jYN3";  // WIFI账户
+char* password = "uj2p3ykp";           // WIFI密码
 
 // IPAddress local_IP(192, 168, 137, 15);
 // IPAddress gateway(192, 168, 137, 1);
