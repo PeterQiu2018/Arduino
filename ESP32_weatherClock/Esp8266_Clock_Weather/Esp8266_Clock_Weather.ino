@@ -18,11 +18,11 @@
  **************************/
 
 const char* WIFI_SSID = "E05B";  //填写你的WIFI名称及密码
-const char* WIFI_PWD = "peter2000714";
+const char* WIFI_PWD = "***";
 
 const char* BILIBILIID = "167480182";  //填写你的B站账号
 
-const char* HEFENG_KEY = "acc7c7aed8e6a9cb960f546b9778ab15";//填写你的和风天气秘钥
+const char* HEFENG_KEY = "****";//填写你的和风天气秘钥
 const char* Lat="53.6398";
 const char* Lon="-1.7798";
 

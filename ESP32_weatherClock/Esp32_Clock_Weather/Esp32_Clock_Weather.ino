@@ -17,9 +17,9 @@ const int SDC_PIN = 33;  //
 SH1106Wire display(I2C_DISPLAY_ADDRESS, SDA_PIN, SDC_PIN);   // 1.3寸用这个
 
 const char* ssid     = "E05B";     // WIFI账户
-const char* password = "peter2000714"; // WIFI密码
+const char* password = "***"; // WIFI密码
 
-const String API_Key = "acc7c7aed8e6a9cb960f546b9778ab15";
+const String API_Key = "****";
 const String Value_lat = "53.63";
 const String Value_lon = "-1.77";
 char* Current_Weather = "https://api.openweathermap.org/data/2.5/weather?lat=53.63&lon=-1.77&appid=acc7c7aed8e6a9cb960f546b9778ab15";
