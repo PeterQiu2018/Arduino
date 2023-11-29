@@ -5,16 +5,14 @@
 
 #define LED 2
 
-char* ssid = "CMCC-jYN3";  // WIFI账户
-char* password = "uj2p3ykp";           // WIFI密码
+char* ssid = "***";  // WIFI账户
+char* password = "***";           // WIFI密码
 // WiFi
 
-// const char *ssid = "DY_XL"; // Enter your WiFi name
-// const char *password = "dadong9c161112";  // Enter WiFi password
 // MQTT Broker
 const char *mqtt_broker = "broker.emqx.io";
-const char *led_topic = "esp8266/peterqiu/led_shenzhen";
-const char *led_lastup = "esp8266/peterqiu/shenzhen_lastup";
+const char *led_topic = "***";
+const char *led_lastup = "***";
 const char *mqtt_username = "emqx";
 const char *mqtt_password = "public";
 const int mqtt_port = 1883;
